@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Community from '../views/Community.vue'
+import homepage from '../views/homepage'
+import dynamic from '../views/dynamic'
 
 Vue.use(VueRouter)
 
@@ -17,6 +19,22 @@ const routes = [{
         },
         component: () =>
             import ( /* webpackChunkName: "community" */ '../views/Community.vue')
+    },
+    {
+        path: '/dynamic',
+        name: 'dynamic',
+        meta: {
+            title: '发布动态'
+        },
+        component: dynamic
+    },
+    {
+        path: '/homepage',
+        name: 'homepage',
+        meta: {
+            title: '首页'
+        },
+        component: homepage
     }
 ]
 
