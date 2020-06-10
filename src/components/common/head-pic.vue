@@ -1,5 +1,5 @@
 <template>
-  <div class="head-pic">
+  <div class="head-pic" :style="setStyle">
     <img :src="picUrl" alt="" />
   </div>
 </template>
@@ -16,6 +16,14 @@ export default {
       type: String,
       default: ''
     }
+  },
+  computed: {
+    setStyle() {
+      return {
+        width: this.size + 'px',
+        height: this.size + 'px'
+      }
+    }
   }
 }
 </script>
@@ -25,8 +33,11 @@ export default {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    box-sizing: border-box;
-    border: 1px solid transparent;
     background-color: aqua;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 </style>

@@ -24,20 +24,46 @@
         </cube-scroll>
       </div>
     </div>
+    <div class="community-dynamic-list">
+      <community-waterfall
+        class="community-dynamic-waterfall"
+        v-if="waterfallData.length"
+        :waterfallData="waterfallData"
+        :onWaterfallLoadMore="onWaterfallLoadMore"
+      >
+      </community-waterfall>
+      <div class="community-dynamic-none" v-else>
+        <div class="community-dynamic-none-icon"></div>
+        <div class="community-dynamic-none-txt">暂无动态~</div>
+        <div class="community-dynamic-none-btn">发布动态</div>
+      </div>
+      <div class="community-dynamic-loading" v-show="isShowLoadingMore">
+        <div class="loaing-detail" v-if="hasMoreDynamic">
+          <div class="loaing-icon"></div>
+          <div class="loaing-txt">{{loadMoreTxt}}</div>
+        </div>
+        <div class="loaing-detail" v-else>
+          <div class="loaing-txt">已经到底啦 <span class="toTop">返回顶部</span></div>
+        </div>
+      </div>
+    </div>
+    <div class=""></div>
+    <div class="community-dynamic-release" v-if="waterfallData.length">
+      <div class="release-icon"></div>
+    </div>
   </page>
 </template>
 
 <script>
-import Page from '@/components/common/Page.vue'
 import Search from '@/components/common/search.vue'
-import headPic from '@/components/common/head-pic.vue'
+import communityWaterfall from '@/components/common/community-waterfall.vue'
+import topicPic from '@/assets/images/c.png'
 
 export default {
   name: 'Community',
   components: {
     Search,
-    headPic,
-    Page
+    communityWaterfall
   },
   data() {
     return {
@@ -58,20 +84,81 @@ export default {
         {
           txt: '关注的'
         },
-      ]
+      ],
+      waterfallData: [
+        {
+          img: topicPic,
+          head: topicPic,
+          desc: '标题最长字段标题最长',
+          name: '标题最长字段标题最长字段标题最长字段',
+          count: 301
+        },
+        {
+          img: topicPic,
+          head: topicPic,
+          desc: '标题最长字段标题最长字段标题最长字段标题最长字段标题最长字段标题最长字段',
+          name: '标题最长字段标题最长字段标题最长字段',
+          count: 302
+        },
+        {
+          img: topicPic,
+          head: topicPic,
+          desc: '标题最长字段标题最长字段标题最长字段标题最长字段标题最长字段标题最长字段',
+          name: '标题最长字段标题最长字段标题最长字段',
+          count: 303
+        },
+        {
+          img: topicPic,
+          head: topicPic,
+          desc: '标题最长字段标题',
+          name: '标题最长字段标题最长字段标题最长字段',
+          count: 304
+        },
+        {
+          img: topicPic,
+          head: topicPic,
+          desc: '标题最长字段标题最长字段标题最长字段标题最长字段标题最长字段标题最长字段',
+          name: '标题最长字段标题最长字段标题最长字段',
+          count: 305
+        },
+        {
+          img: topicPic,
+          head: topicPic,
+          desc: '标题最长字段标题',
+          name: '标题最长字段标题最长字段标题最长字段',
+          count: 306
+        },
+      ],
+      isShowLoadingMore: false,
+      loadMoreTxt: '火速加载中，请耐心等候…',
+      hasMoreDynamic: true
     }
   },
+  methods: {
+    onWaterfallLoadMore() {
+      this.isShowLoadingMore = !this.isShowLoadingMore
+      this.hasMoreDynamic && setTimeout(() => {
+        this.hasMoreDynamic = false
+      }, 500);
+    }
+  }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .community {
+    position: relative;
     .community-head {
+      position: absolute;
+      left: 0;
+      top: 0;
       width: 100%;
       height: 80px;
       background-color: #fff;
       box-sizing: border-box;
       padding: 10px 0;
+      box-shadow: 0 4px 12px 0 rgba(0,0,0,0.06);
+      z-index: 10;
       .community-head-top {
         display: flex;
         justify-content: space-between;
@@ -86,9 +173,7 @@ export default {
         text-align: center;
         overflow: hidden;
         margin-top: 2px;
-        
         .community-head-nav-scroll {
-          
           .community-head-nav-wrap {
             white-space: nowrap;
             .community-head-nav-item {
@@ -111,7 +196,7 @@ export default {
                     width: 100%;
                     height: 2px;
                     background: linear-gradient(90deg, #FF7A38, #FFDF6F);
-                    transform: translateX(-50%);
+                    transform: translateX(-50%) translateZ(1px);
                     border-radius: 2px;
                   }
                 }
@@ -119,6 +204,94 @@ export default {
             }
           }
         }
+      }
+    }
+    .community-dynamic-list {
+      position: absolute;
+      left: 0;
+      top: 80px;
+      bottom: 50px;
+      right: 0;
+      margin: auto;
+      padding: 0 5px;
+      height: auto;
+      .community-dynamic-none {
+        position: absolute;
+        left: 0;
+        top: 128px;
+        width: 100%;
+        .community-dynamic-none-icon {
+          width: 72px;
+          height: 63px;
+          background-color: #FF4D36;
+          margin: 0 auto 10px;
+        }
+        .community-dynamic-none-txt {
+          font-size: 14px;
+          color: #999999;
+          margin-bottom: 20px;
+        }
+        .community-dynamic-none-btn {
+          width: 100px;
+          height: 32px;
+          line-height: 32px;
+          border: 1px solid #FF693B;
+          border-radius: 16px;
+          margin: 0 auto;
+          color: #FF693B;
+        }
+      }
+      .community-dynamic-loading {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 30px;
+        font-size: 12px;
+        line-height: 18px;
+        color: #999;
+        /* background-color: #F2F2F2; */
+        display: flex;
+        justify-content: center;
+        .loaing-detail {
+          height: 18px;
+          display: flex;
+          justify-content: center;
+          position: relative;
+          .loaing-icon {
+            position: absolute;
+            left: -20px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            background-color: #FF7A38;
+          }
+          .loaing-txt {
+            .toTop {
+              color: #ff693b;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+    .community-dynamic-release {
+      position: fixed;
+      right: 20px;
+      bottom: 104px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      opacity: 0.9;
+      background-image: linear-gradient(230deg, #FFC33D 0%, #FF4D36 100%);
+      box-shadow: 0 4px 10px 0 rgba(255,68,0,0.30);
+      z-index: 10;
+      .release-icon {
+        width: 20px;
+        height: 20px;
+        margin: 14px auto 0;
+        background-color: #fff;
       }
     }
   }
