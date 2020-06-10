@@ -20,7 +20,7 @@
                 </li>
             </ul>
         </cube-scroll>
-        <div class="interactive-more">
+        <div class="interactive-more" @click="goToCommunity">
             <span>更多&gt;</span>
         </div>
     </div>
@@ -53,6 +53,11 @@
                         avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1591699914868&di=fef4bbfbdeb28dc6abb2e25eea4fe128&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201511%2F21%2F20151121170148_im8UV.jpeg'
                     }
                 ]
+            }
+        },
+        methods: {
+            goToCommunity() {
+                this.$router.replace('/community')
             }
         }
     }
