@@ -14,7 +14,7 @@
         </div>
         <div class="questionnaire-content">
             <p class="questionnaire-ques">4.您对调养家APP那方面比较喜欢？（多选）</p>
-            <cube-checkbox-group @input="checkQues" v-model="checkList" :options="options"/>
+            <cube-checkbox-group @input="checkQues" v-model="checkList" :options="options" shape="square"/>
         </div>
         <div class="questionnaire-content">
             <p class="questionnaire-ques">5.您的建议，是我们持续前进的动力。</p>
