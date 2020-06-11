@@ -33,3 +33,22 @@
     color: #000;
     font-weight: 500;
 }
+.cube-checkbox-group::after, .cube-checkbox-group::before{
+    border: 0!important;
+}
+.cube-checkbox-wrap:before, .cube-checkbox-wrap:after{
+    border: 0!important;
+}
+.cube-checkbox-group{
+    margin-bottom: 16px;
+}
+.cube-checkbox-wrap {
+    padding: 0;
+    margin-bottom: 8px;
+}
+.cube-checkbox{
+    color: #000;
+}
+.cube-textarea_active:after{
+    border-color: #e6e6e6;
+}

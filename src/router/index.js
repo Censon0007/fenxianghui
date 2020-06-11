@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import homepage from '../views/homepage'
 import dynamicRelease from '../views/dynamic/release.vue'
 import dynamicDetail from '../views/dynamic/detail.vue'
+import questionnaire from '../views/questionnaire'
 
 Vue.use(VueRouter)
 
@@ -19,6 +20,14 @@ const routes = [{
         },
         component: () =>
             import ( /* webpackChunkName: "community" */ '../views/community/index.vue')
+    },
+    {
+        path: '/questionnaire',
+        name: 'questionnaire',
+        meta: {
+            title: '调查问卷'
+        },
+        component: questionnaire
     },
     {
         path: '/dynamic-release',
