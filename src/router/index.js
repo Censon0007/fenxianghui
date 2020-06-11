@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import homepage from '../views/homepage'
-import dynamic from '../views/dynamic'
+import dynamicRelease from '../views/dynamic/release.vue'
+import dynamicDetail from '../views/dynamic/detail.vue'
 
 Vue.use(VueRouter)
 
@@ -20,12 +21,12 @@ const routes = [{
             import ( /* webpackChunkName: "community" */ '../views/community/index.vue')
     },
     {
-        path: '/dynamic',
-        name: 'dynamic',
+        path: '/dynamic-release',
+        name: 'dynamic-release',
         meta: {
             title: '发布动态'
         },
-        component: dynamic
+        component: dynamicRelease
     },
     {
         path: '/homepage',
@@ -34,7 +35,15 @@ const routes = [{
             title: '首页'
         },
         component: homepage
-    }
+    },
+    {
+        path: '/dynamic-detail',
+        name: 'dynamic-detail',
+        meta: {
+            title: '动态详情'
+        },
+        component: dynamicDetail
+    },
 ]
 
 const router = new VueRouter({

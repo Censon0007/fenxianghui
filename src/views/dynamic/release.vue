@@ -37,7 +37,7 @@
 
 <script>
     export default {
-        name: "dynamic",
+        name: "dynamic-release",
         data() {
             return {
                 uplodaImages: [
