@@ -4,6 +4,7 @@ import homepage from '../views/homepage'
 import dynamicRelease from '../views/dynamic/release.vue'
 import dynamicDetail from '../views/dynamic/detail.vue'
 import questionnaire from '../views/questionnaire'
+import communityMe from '../views/community-me'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,14 @@ const routes = [{
         },
         component: () =>
             import ( /* webpackChunkName: "community" */ '../views/community/index.vue')
+    },
+    {
+        path: '/community-me',
+        name: 'community-me',
+        meta: {
+            title: '我的社区主页'
+        },
+        component: communityMe
     },
     {
         path: '/questionnaire',
