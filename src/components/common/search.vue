@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <div class="search-icon"></div>
+    <div class="search-icon back-repeat"></div>
     <div>请输入你要搜索的内容</div>
   </div>
 </template>
@@ -28,8 +28,8 @@ export default {
     .search-icon {
       width: 14px;
       height: 14px;
-      background: #999;
       margin: 0 6px 0 12px;
+      background-image: url("../../assets/images/Icon_sousuo.png");
     }
   }
 </style>

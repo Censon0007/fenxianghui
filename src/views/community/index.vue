@@ -48,9 +48,7 @@
       </div>
     </div>
     <div class=""></div>
-    <div class="community-dynamic-release" v-if="waterfallData.length">
-      <div class="release-icon"></div>
-    </div>
+    <div class="community-dynamic-release" v-if="waterfallData.length"></div>
   </page>
 </template>
 
@@ -278,21 +276,16 @@ export default {
     }
     .community-dynamic-release {
       position: fixed;
-      right: 20px;
-      bottom: 104px;
-      width: 54px;
-      height: 54px;
+      right: 10px;
+      bottom: 85px;
+      width: 74px;
+      height: 74px;
       border-radius: 50%;
-      opacity: 0.9;
-      background-image: linear-gradient(230deg, #FFC33D 0%, #FF4D36 100%);
-      box-shadow: 0 4px 10px 0 rgba(255,68,0,0.30);
+      background-image: url("../../assets/images/Icon_fabu.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
       z-index: 10;
-      .release-icon {
-        width: 20px;
-        height: 20px;
-        margin: 14px auto 0;
-        background-color: #fff;
-      }
+
     }
   }
 </style>

@@ -30,7 +30,7 @@
             <p class="dynamic-label-labels" v-for="(item, index) in labels" :key="index">{{item}}</p>
         </div>
         <div class="dynamic-release">
-            <button class="dynamic-release-btn" :class="{redald: status === 1}">发布动态</button>
+            <button class="dynamic-release-btn" :class="{redald: status === 1}" @click="showNotDynamic">发布动态</button>
         </div>
     </div>
 </template>
@@ -64,7 +64,6 @@
             chooseImages() { // 添加图片
                 this.$createActionSheet({
                     title: '',
-                    active: 0,
                     data: [
                         {content: '拍照'},
                         {content: '从手机相册选择'}
@@ -85,6 +84,7 @@
                 this.$createDialog({
                     type: 'confirm',
                     content: '你的‘动态’尚未发布，返回后动态内容将不做保存',
+                    maskClosable: true,
                     icon: 'cubeic-important',
                     confirmBtn: {
                         text: '去发布',
