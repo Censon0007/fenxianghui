@@ -33,22 +33,25 @@
         </div>
         <div class="my-community-content" v-if="currentIndex === 0">
             <div class="my-community-dynamic" v-if="waterfallData.length">
-                <template v-for="(item, index) of waterfallData">
-                    <div class="community-dynamic" :key="index">
-                        <div class="community-dynamic-container">
-                            <img v-if="item.img" :src="item.img" alt=""/>
-                            <div class="community-dynamic-detail">
-                                <div class="community-dynamic-desc two-text-ellipsis">{{item.desc}}</div>
-                                <div class="community-dynamic-author">
-                                    <head-pic class="author-head" :size="16" :picUrl="item.head"></head-pic>
-                                    <div class="author-name ellipsis">{{item.name}}</div>
-                                    <div class="author-love back-repeat"></div>
-                                    <div class="author-zan">{{item.count}}</div>
+                <waterfall :col="2" :data="waterfallData">
+                    <template v-for="(item, index) of waterfallData">
+                        <div class="community-dynamic" :key="index">
+                            <div class="community-dynamic-container">
+                                <img v-if="item.img" :src="item.img" alt=""/>
+                                <div class="community-dynamic-detail">
+                                    <div class="community-dynamic-desc two-text-ellipsis">{{item.desc}}</div>
+                                    <div class="community-dynamic-author">
+                                        <head-pic class="author-head" :size="16" :picUrl="item.head"></head-pic>
+                                        <div class="author-name ellipsis">{{item.name}}</div>
+                                        <div class="author-love back-repeat"></div>
+                                        <div class="author-zan">{{item.count}}</div>
+                                    </div>
                                 </div>
+                                <button class="community-dynamic-subs" v-if="item.status">{{item.status}}</button>
                             </div>
                         </div>
-                    </div>
-                </template>
+                    </template>
+                </waterfall>
             </div>
             <nothing :nothingData="nothingData" @goTo="goToHomepage" v-else></nothing>
         </div>
@@ -73,8 +76,27 @@
             <nothing :nothingData="nothingData" @goTo="goToHomepage" v-else></nothing>
         </div>
         <div class="my-community-content" v-if="currentIndex === 2">
-
-            <nothing :nothingData="nothingData" @goTo="goToHomepage"></nothing>
+            <div class="my-community-dynamic" v-if="waterfallData.length">
+                <waterfall :col="2" :data="waterfallData">
+                    <template v-for="(item, index) of waterfallData">
+                        <div class="community-dynamic" :key="index">
+                            <div class="community-dynamic-container">
+                                <img v-if="item.img" :src="item.img" alt=""/>
+                                <div class="community-dynamic-detail">
+                                    <div class="community-dynamic-desc two-text-ellipsis">{{item.desc}}</div>
+                                    <div class="community-dynamic-author">
+                                        <head-pic class="author-head" :size="16" :picUrl="item.head"></head-pic>
+                                        <div class="author-name ellipsis">{{item.name}}</div>
+                                        <div class="author-love back-repeat"></div>
+                                        <div class="author-zan">{{item.count}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </waterfall>
+            </div>
+            <nothing :nothingData="nothingData" @goTo="goToHomepage" v-else></nothing>
         </div>
     </page>
 </template>
@@ -100,7 +122,8 @@
                     head: 'http://gbres.dfcfw.com/Files/picture/20200519/A470FA6879010F8F0A5EE64267367E5E_w640h512.jpg  ',
                     desc: '标题最长字段标题最长',
                     name: '标题最长字段标题最长字段标题最长字段',
-                    count: 301
+                    count: 301,
+                    status: '已采纳'
                 }],
                 commentList: [
                     {
@@ -335,6 +358,7 @@
                     background-color: #fff;
                     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.06);
                     min-height: 100px;
+                    position: relative;
 
                     img {
                         display: block;
@@ -384,6 +408,17 @@
                                 width: 28px;
                             }
                         }
+                    }
+                    .community-dynamic-subs{
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 54px;
+                        height: 20px;
+                        border-radius: 6px 0px 9px 0px;
+                        background: rgba(0,0,0,0.50);
+                        color: #fff;
+                        font-size: 12px;
                     }
                 }
             }
