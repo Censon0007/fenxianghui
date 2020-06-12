@@ -40,7 +40,8 @@
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-cube-ui": "~0.2.5",
     "vue-loader": "^15.9.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vue-waterfall-easy": "^2.4.4"
   },
   "transformModules": {
     "cube-ui": {

@@ -250,3 +250,35 @@ input:focus {
     line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+
+.top-border-1px:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #e6e6e6;
+    transform: scaleY(.5);
+}
+
+.community-waterfall-container .img-box {
+    padding: 0 5px 10px !important;
+    border-radius: 6px !important;
+}
+
+.community-waterfall-container .img-inner-box {
+    border-radius: 6px !important;
+    background-color: #fff !important;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.06) !important;
+    overflow: hidden !important;
+}
+
+.community-waterfall-container .img-box .img-wraper {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.community-waterfall-container .loading.ball-beat {
+    bottom: 0 !important;
+}

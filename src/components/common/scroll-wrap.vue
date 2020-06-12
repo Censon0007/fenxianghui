@@ -1,17 +1,16 @@
 <template>
-  <div class="scroll-wrap">
-    <cube-scroll
-      ref="scroll"
-      :direction="direction"
-      :data="scrollData"
-      :options="options"
-      :nestMode="nestMode"
-      @pulling-down="onPullingDown"
-      @pulling-up="onPullingUp"
-    >
-      <slot></slot>
-    </cube-scroll>
-  </div>
+  <cube-scroll
+    ref="scroll"
+    class="scroll-wrap"
+    :direction="direction"
+    :data="scrollData"
+    :options="options"
+    :nestMode="nestMode"
+    @pulling-down="onPullingDown"
+    @pulling-up="onPullingUp"
+  >
+    <slot></slot>
+  </cube-scroll>
 </template>
 
 <script>

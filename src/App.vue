@@ -20,9 +20,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import './common/reset/reset.css';
-@import './common/css/cube-reset.css';
+<style lang="scss" scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
