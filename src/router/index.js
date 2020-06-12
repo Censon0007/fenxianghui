@@ -5,6 +5,8 @@ import dynamicRelease from '../views/dynamic/release.vue'
 import dynamicDetail from '../views/dynamic/detail.vue'
 import questionnaire from '../views/questionnaire'
 import communityMe from '../views/community-me'
+import attention from '../views/attention'
+import setting from '../views/setting'
 
 Vue.use(VueRouter)
 
@@ -29,6 +31,22 @@ const routes = [{
             title: '我的社区主页'
         },
         component: communityMe
+    },
+    {
+        path: '/setting',
+        name: 'setting',
+        meta: {
+            title: '我的关注'
+        },
+        component: setting
+    },
+    {
+        path: '/attention',
+        name: 'attention',
+        meta: {
+            title: '我的关注'
+        },
+        component: attention
     },
     {
         path: '/questionnaire',

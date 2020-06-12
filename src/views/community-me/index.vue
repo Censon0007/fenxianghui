@@ -7,7 +7,7 @@
                     <span class="my-community-vip"></span>
                 </div>
                 <span class="my-community-nickname">什邡市水房</span>
-                <span class="my-community-setting back-repeat"></span>
+                <span class="my-community-setting back-repeat" @click="goToSetting"></span>
                 <div class="my-community-homepage" @click="goToHomepage">社区首页&nbsp;&gt;</div>
             </div>
             <div class="my-community-data">
@@ -15,7 +15,7 @@
                     <span class="my-community-top">123</span>
                     <span>获赞数</span>
                 </div>
-                <div class="my-community-style">
+                <div class="my-community-style" @click="goToAttention">
                     <span class="my-community-top">0</span>
                     <span>我的关注&nbsp;&gt;</span>
                 </div>
@@ -26,7 +26,8 @@
             </div>
         </div>
         <div class="my-community-nav">
-            <div v-for="(item, index) in tabs" :class="{on: currentIndex === index}" @click.stop="checkIndex(index)" :key="index">{{item}}
+            <div v-for="(item, index) in tabs" :class="{on: currentIndex === index}" @click.stop="checkIndex(index)"
+                 :key="index">{{item}}
                 <div v-if="currentIndex === index" class="my-community-sign"></div>
             </div>
         </div>
@@ -49,15 +50,31 @@
                     </div>
                 </template>
             </div>
-            <nothing :nothingData="nothingData" v-else></nothing>
+            <nothing :nothingData="nothingData" @goTo="goToHomepage" v-else></nothing>
         </div>
         <div class="my-community-content" v-if="currentIndex === 1">
-
-            <nothing :nothingData="nothingData"></nothing>
+            <div class="my-community-comment" v-if="commentList.length">
+                <div v-for="(item, index) in commentList" :key="index" class="my-community-comment-contain bottom-border-1px">
+                    <div class="my-community-comment-person">
+                        <img class="my-community-comment-avatar" :src="item.personInfo.avatar" alt="" />
+                        <div class="my-community-comment-nickname">{{item.personInfo.nickname}}</div>
+                        <div class="my-community-comment-date">{{formatDate(item.personInfo.date)}}</div>
+                    </div>
+                    <div class="my-community-comment-dynamic two-text-ellipsis">{{item.personInfo.dynamic}}</div>
+                    <div class="my-community-comment-comment">
+                        <img class="my-community-comment-img" :src="item.dynamicInfo.bannerLink" alt="" />
+                        <div class="my-community-comment-info">
+                            <span class="my-community-comment-name">{{item.dynamicInfo.name}}</span>
+                            <p class="my-community-comment-title two-text-ellipsis">{{item.dynamicInfo.title}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nothing :nothingData="nothingData" @goTo="goToHomepage" v-else></nothing>
         </div>
         <div class="my-community-content" v-if="currentIndex === 2">
 
-            <nothing :nothingData="nothingData"></nothing>
+            <nothing :nothingData="nothingData" @goTo="goToHomepage"></nothing>
         </div>
     </page>
 </template>
@@ -67,6 +84,7 @@
     import a from '../../assets/images/Icon_fabuweikong.png'
     import b from '../../assets/images/Icon_pinglunweikong.png'
     import c from '../../assets/images/Icon-shoucangweik.png'
+    import moment from 'moment'
 
     export default {
         name: "community-me",
@@ -77,7 +95,41 @@
                 imgUrl: a,
                 tabs: ['我的发布', '我的评论', '我的收藏'],
                 currentIndex: 0,
-                waterfallData: [],
+                waterfallData: [{
+                    img: 'http://gbres.dfcfw.com/Files/picture/20200519/A470FA6879010F8F0A5EE64267367E5E_w640h512.jpg',
+                    head: 'http://gbres.dfcfw.com/Files/picture/20200519/A470FA6879010F8F0A5EE64267367E5E_w640h512.jpg  ',
+                    desc: '标题最长字段标题最长',
+                    name: '标题最长字段标题最长字段标题最长字段',
+                    count: 301
+                }],
+                commentList: [
+                    {
+                        personInfo: {
+                            avatar: 'http://gbres.dfcfw.com/Files/picture/20200519/A470FA6879010F8F0A5EE64267367E5E_w640h512.jpg',
+                            nickname: '张三啊',
+                            date: 1591945460000,
+                            dynamic: '一直都在使用无限极产品，很好。使用无限极产品，很好。使用无限极产品，很放心。个哦IQ和我覅书法家卡本身就开发按实际开发',
+                        },
+                        dynamicInfo: {
+                            bannerLink: 'http://gbres.dfcfw.com/Files/picture/20200519/A470FA6879010F8F0A5EE64267367E5E_w640h512.jpg',
+                            name: '@黑夜太难熬',
+                            title: '绪对免疫力有很大的影响，情绪不像感冒发烧，来了又走，它是人本身的一种生最长字段思考法办事广发卡把数据开放阿巴斯讲课费把借款方'
+                        }
+                    },
+                    {
+                        personInfo: {
+                            avatar: 'http://gbres.dfcfw.com/Files/picture/20200519/A470FA6879010F8F0A5EE64267367E5E_w640h512.jpg',
+                            nickname: '张三啊',
+                            date: 1591945460000,
+                            dynamic: '一直都在使用无限极产品，很好。使用无限极产品，很好。使用无限极产品，很放心。个哦IQ和我覅书法家卡本身就开发按实际开发',
+                        },
+                        dynamicInfo: {
+                            bannerLink: 'http://gbres.dfcfw.com/Files/picture/20200519/A470FA6879010F8F0A5EE64267367E5E_w640h512.jpg',
+                            name: '@黑夜太难熬',
+                            title: '绪对免疫力有很大的影响，情绪不像感冒发烧，来了又走，它是人本身的一种生最长字段思考法办事广发卡把数据开放阿巴斯讲课费把借款方'
+                        }
+                    }
+                ]
             }
         },
         components: {
@@ -119,13 +171,22 @@
                 this.currentIndex = index
             },
             goToHomepage() { // 地址需换成社区首页地址路由
-                this.$router.replace('/homepage')
+                this.$router.push('/homepage')
+            },
+            goToAttention() { // 去我的关注
+                this.$router.push('/attention')
+            },
+            goToSetting() { // 去设置
+                this.$router.push('/setting')
             },
             http() { // 发送请求
                 this.$api.hello({
                     activityId: '1270919190450147328',
                     templateId: '1270919190806663168'
                 })
+            },
+            formatDate(val) { // 格式化日期 val：时间戳
+                return moment(val).format("YYYY-MM-DD")
             }
         }
     }
@@ -253,15 +314,20 @@
         left: 0;
         right: 0;
         bottom: 0;
-        padding: 10px 5px 0;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow-y: scroll;
 
         .my-community-dynamic {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 10px 10px 0;
+
             .community-dynamic {
                 width: 172px;
                 overflow: hidden;
-                padding: 0 5px 10px;
+                padding: 0 0px 10px;
 
                 .community-dynamic-container {
                     width: 100%;
@@ -296,7 +362,6 @@
                             line-height: 18px;
                             font-size: 12px;
                             color: #666;
-                            margin-bottom: 12px;
 
                             .author-head {
                                 width: 16px;
@@ -318,6 +383,76 @@
                             .author-zan {
                                 width: 28px;
                             }
+                        }
+                    }
+                }
+            }
+        }
+
+        .my-community-comment {
+            width: 100%;
+            background-color: #fff;
+
+            .my-community-comment-contain {
+                position: relative;
+                width: 100%;
+                padding: 20px 12px 16px;
+                .my-community-comment-person{
+                    display: flex;
+                    align-items: center;
+                    .my-community-comment-avatar{
+                        width: 30px;
+                        height: 30px;
+                        display: block;
+                        margin-right: 10px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                    }
+                    .my-community-comment-nickname{
+                        font-size: 14px;
+                        color: #000;
+                    }
+                    .my-community-comment-date{
+                        margin-left: auto;
+                        font-size: 12px;
+                        color: #999;
+                    }
+                }
+                .my-community-comment-dynamic{
+                    margin: 8px 0;
+                    text-align: left;
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #333;
+                }
+                .my-community-comment-comment{
+                    display: flex;
+                    background-color: #F5F5F5;
+                    width: 100%;
+                    border-radius: 4px;
+                    overflow: hidden;
+                    .my-community-comment-img{
+                        width: 80px;
+                        height: 80px;
+                        display: block;
+                        border-radius: 4px;
+                        overflow: hidden;
+                        margin-right: 8px;
+                        flex-shrink: 0;
+                    }
+                    .my-community-comment-info{
+                        text-align: left;
+                        padding: 8px 10px 12px 0;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        .my-community-comment-name{
+                            font-size: 12px;
+                            color: #000;
+                        }
+                        .my-community-comment-title{
+                            font-size: 12px;
+                            color: #666;
                         }
                     }
                 }
