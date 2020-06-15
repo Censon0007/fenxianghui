@@ -1,6 +1,6 @@
 <template>
-    <page pageName="interactive-content">
-        <scroll-wrap
+    <div class="interactive-content">
+        <cube-scroll
                 ref="scroll"
                 :data="product"
                 direction="horizontal"
@@ -19,11 +19,11 @@
                     </div>
                 </li>
             </ul>
-        </scroll-wrap>
+        </cube-scroll>
         <div class="interactive-more" @click="goToCommunity">
             <span>更多&gt;</span>
         </div>
-    </page>
+    </div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -63,7 +63,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .interactive-content{
         position: relative;
         .horizontal-scroll-list-wrap {
@@ -77,17 +77,19 @@
             padding: 50px 0 15px;
             position: relative;
             overflow: hidden;
+            .cube-scroll-content{
+                display: inline-block
+            }
             .list-wrapper{
                 padding: 0 10px;
-                white-space: nowrap;
+                display: flex;
                 .interactive-product{
-                    display: inline-block;
-                    width: 180px;
+                    width: 150px;
                     height: 205px;
                     background-color: #fff;
                     border-radius: 4px;
                     overflow: hidden;
-                    padding-right: 10px;
+                    margin-right: 10px;
                     &:last-child{
                         margin-right: 0;
                     }

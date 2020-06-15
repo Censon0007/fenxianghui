@@ -2,7 +2,7 @@
   <page pageName="community">
     <div class="community-head">
       <div class="community-head-top">
-        <Search/>
+        <Search @search="search"/>
         <head-pic/>
       </div>
       <div class="community-head-nav">
@@ -132,7 +132,9 @@ export default {
     }
   },
   methods: {
-    
+    search() {
+      this.$router.push('/search')
+    }
   }
 }
 </script>

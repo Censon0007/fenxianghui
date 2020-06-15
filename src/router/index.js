@@ -7,6 +7,7 @@ import questionnaire from '../views/questionnaire'
 import communityMe from '../views/community-me'
 import attention from '../views/attention'
 import setting from '../views/setting'
+import search from '../views/search'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,14 @@ const routes = [{
         },
         component: () =>
             import ( /* webpackChunkName: "community" */ '../views/community/index.vue')
+    },
+    {
+        path: '/search',
+        name: 'search',
+        meta: {
+            title: '搜索'
+        },
+        component: search
     },
     {
         path: '/community-me',

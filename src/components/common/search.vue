@@ -1,5 +1,5 @@
 <template>
-  <div class="search">
+  <div class="search" @click="search">
     <div class="search-icon back-repeat"></div>
     <div>请输入你要搜索的内容</div>
   </div>
@@ -10,6 +10,11 @@ export default {
   name: 'search',
   props: {
     msg: String
+  },
+  methods: {
+    search() {
+      this.$emit('search')
+    }
   }
 }
 </script>

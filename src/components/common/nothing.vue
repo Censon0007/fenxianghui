@@ -2,7 +2,7 @@
     <div class="nothing-contain">
         <img class="nothing-img" :src="nothingData.imgUrl" alt="">
         <p class="nothing-word">{{nothingData.word}}</p>
-        <button class="nothing-btnWord" @click="go">{{nothingData.btnWord}}</button>
+        <button v-if="nothingData.btnWord" class="nothing-btnWord" @click="go">{{nothingData.btnWord}}</button>
     </div>
 </template>
 

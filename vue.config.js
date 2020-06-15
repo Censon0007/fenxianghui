@@ -54,5 +54,10 @@ module.exports = {
             postCompile: true,
             theme: false
         }
+    },
+
+    devServer: {
+        open: true,
+        port: 9090
     }
 }
