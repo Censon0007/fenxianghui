@@ -8,6 +8,7 @@ import communityMe from '../views/community-me'
 import attention from '../views/attention'
 import setting from '../views/setting'
 import search from '../views/search'
+import dynamicDetails from '../views/dynamic-details'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,14 @@ const routes = [{
         },
         component: () =>
             import ( /* webpackChunkName: "community" */ '../views/community/index.vue')
+    },
+    {
+        path: '/dynamic-details',
+        name: 'dynamic-details',
+        meta: {
+            title: '动态详情'
+        },
+        component: dynamicDetails
     },
     {
         path: '/search',

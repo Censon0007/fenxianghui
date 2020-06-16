@@ -52,7 +52,7 @@
 .cube-textarea_active:after{
     border-color: #e6e6e6;
 }
-.cube-popup-content{
+.cube-popup-contain{
     padding: 14px 78px;
     line-height: 20px;
     opacity: 0.7;
