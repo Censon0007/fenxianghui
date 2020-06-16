@@ -116,6 +116,7 @@
                         width: 45px;
                         height: 45px;
                         display: block;
+                        margin-bottom: 9px;
                     }
                 }
                 .left-div{
