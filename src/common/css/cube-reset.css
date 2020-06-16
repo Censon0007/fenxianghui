@@ -4,34 +4,40 @@
     font-size: 14px;
 }
 
+.cube-dialog-content-def{
+    padding: 0 20px 18px 20px!important;
+    text-align: center!important;
+    color: #000;
+}
+
 .cube-dialog-icon i {
     background-image: linear-gradient(230deg, #FFC33D 0%, #FF4D36 100%);
     color: #fff;
-    padding: 5px;
+    padding: 5px!important;
 }
 
 .cube-dialog-btn {
-    font-size: 16px;
-    padding: 12px 10px;
-    color: #000;
+    font-size: 16px!important;
+    padding: 12px 10px!important;
+    color: #000!important;
 }
 
 .cube-dialog-btn_highlight {
-    color: #fc9153;
+    color: #fc9153!important;
 }
 
 .cube-action-sheet-space{
-    height: 4px;
-    background-color: #F5F5F5;
+    height: 4px!important;
+    background-color: #F5F5F5!important;
 }
 .cube-action-sheet-panel{
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-    overflow: hidden;
+    border-top-right-radius: 8px!important;
+    border-top-left-radius: 8px!important;
+    overflow: hidden!important;
 }
 .cube-action-sheet-cancel span, .cube-action-sheet-item, .cube-action-sheet-title{
-    color: #000;
-    font-weight: 500;
+    color: #000!important;
+    font-weight: 500!important;
 }
 .cube-checkbox-group::after, .cube-checkbox-group::before{
     border: 0!important;
@@ -40,17 +46,17 @@
     border: 0!important;
 }
 .cube-checkbox-group{
-    margin-bottom: 16px;
+    margin-bottom: 16px!important;
 }
 .cube-checkbox-wrap {
-    padding: 0;
-    margin-bottom: 8px;
+    padding: 0!important;
+    margin-bottom: 8px!important;
 }
 .cube-checkbox{
-    color: #000;
+    color: #000!important;
 }
 .cube-textarea_active:after{
-    border-color: #e6e6e6;
+    border-color: #e6e6e6!important;
 }
 .cube-popup-contain{
     padding: 14px 78px;

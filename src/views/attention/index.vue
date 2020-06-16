@@ -11,7 +11,7 @@
             <img class="attention-nothing-img" src="../../assets/images/icon_weiguanzhu.png" alt="">
             <p class="attention-nothing-w">你暂未关注任何用户~</p>
         </div>
-        <cube-popup type="my-popup" :mask="false" ref="myPopup">已取关</cube-popup>
+        <cube-popup type="my-popup" :mask="false" ref="myPopup"><span class="cube-popup-contain" >已取关</span></cube-popup>
     </page>
 </template>
 
